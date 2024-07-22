@@ -321,12 +321,16 @@ class WebhookController extends Controller
                             }
                             $cookiesString = implode('; ', $cookiesArray);
                             $package_duration_time = $order->service->package_duration->value > 0 ? -$order->service->package_duration->value * 24 * 60 * 60 * 1000 : 0;
+                            $s_name = $pre_order->service_name;
+                            $s_name = preg_replace('/\s+/', '', $s_name);
+                            $s_name = $s_name . '@' . $subscription->id;
+
                             $settings = [
                                 "clients" => [
                                     [
                                         "id" => $subscription->uuid,
                                         "flow" => "",
-                                        "email" => $subscription->code,
+                                        "email" => $s_name,
                                         "limitIp" => 0,
                                         "totalGB" => $order->service->package->value > 0 ? $order->service->package->value * pow(1024, 3) : 0,
                                         "expiryTime" => $package_duration_time,
