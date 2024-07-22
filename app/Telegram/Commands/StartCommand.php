@@ -29,8 +29,8 @@ class StartCommand extends Command
 
         if (!$user) {
             $user =    User::query()->create([
-                'username' => $sender->username,
-                'first_name' =>  $sender->first_name,
+                'username' => $sender->username ?? "-",
+                'first_name' =>  $sender->first_name ?? "-",
                 'uid' => $sender->id,
                 'password' => Hash::make(Str::random(8)),
             ]);
