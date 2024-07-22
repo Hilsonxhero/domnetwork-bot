@@ -73,7 +73,7 @@ class GenerateConfigService
             $parts = parse_url($server_address);
             $clean_server_url = $parts['host'];
             if ($inbound->successful()) {
-                $service_link = "https://$clean_server_url:23590/sub/$subscription->subId?name=$inbound_remark-$subscription->code";
+                $service_link = "https://$clean_server_url:2096/subs/$subscription->subId?name=$inbound_remark-$subscription->code";
                 return $service_link;
             }
         } catch (\Throwable $th) {
