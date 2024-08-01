@@ -33,19 +33,18 @@ class StartCommand extends Command
                 'first_name' =>  $sender->first_name ?? "-",
                 'uid' => $sender->id,
                 'password' => Hash::make(Str::random(8)),
+                'is_magic_bot_user' => true,
+                'is_dom_bot_user' => false
             ]);
         }
-        $purchase_service = ['text' => '🛒 خرید سرویس'];
-        $services = ['text' => '🛍 سرویس های من'];
+        $purchase_service = ['text' => '🛒 خرید '];
+        $services = ['text' => '🛍  خرید های من'];
         $charge = ['text' => '💸 شارژ حساب'];
-        $pricing = ['text' => '🛒 تعرفه خدمات'];
         $profile = ['text' => '👤 پروفایل'];
         $support = ['text' => '📮 پشتیبانی آنلاین'];
-        $guide = ['text' => '🔗 راهنمای اتصال'];
         $keyboard = [
             [$services, $purchase_service],
-            [$charge, $pricing, $profile],
-            [$support, $guide],
+            [$charge, $support, $profile],
         ];
 
         $replyMarkup = json_encode([

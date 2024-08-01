@@ -35,7 +35,9 @@ class User extends Authenticatable
         'is_superuser',
         'is_notifable',
         'is_partner',
-        'partner_id'
+        'partner_id',
+        'is_dom_bot_user',
+        'is_magic_bot_user'
     ];
 
     /**

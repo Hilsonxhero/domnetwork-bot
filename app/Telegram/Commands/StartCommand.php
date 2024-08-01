@@ -33,6 +33,8 @@ class StartCommand extends Command
                 'first_name' =>  $sender->first_name ?? "-",
                 'uid' => $sender->id,
                 'password' => Hash::make(Str::random(8)),
+                'is_magic_bot_user' => false,
+                'is_dom_bot_user' => true
             ]);
         }
         $purchase_service = ['text' => '🛒 خرید سرویس'];
