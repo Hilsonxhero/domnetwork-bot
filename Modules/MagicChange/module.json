@@ -1,0 +1,11 @@
+{
+    "name": "MagicChange",
+    "alias": "magicchange",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\MagicChange\\Providers\\MagicChangeServiceProvider"
+    ],
+    "files": []
+}

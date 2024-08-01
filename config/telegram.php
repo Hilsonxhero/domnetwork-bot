@@ -3,6 +3,7 @@
 use App\Telegram\Commands\PurchaseServiceCommand;
 use Telegram\Bot\Commands\HelpCommand;
 use App\Telegram\Commands\StartCommand;
+use Modules\MagicChange\Telegram\Commands\StartCommand as CommandsStartCommand;
 
 return [
     /*
@@ -41,6 +42,15 @@ return [
                 //Acme\Project\Commands\MyTelegramBot\BotCommand::class,
                 StartCommand::class,
                 PurchaseServiceCommand::class,
+            ],
+        ],
+
+        'magic' => [
+            'token' => env('MAGIC_TELEGRAM_BOT_TOKEN', 'YOUR-BOT-TOKEN'),
+            'certificate_path' => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
+            'webhook_url' => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
+            'commands' => [
+                CommandsStartCommand::class,
             ],
         ],
 

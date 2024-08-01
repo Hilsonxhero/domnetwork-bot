@@ -26,3 +26,6 @@ Route::prefix('/auth')->group(function () {
 });
 
 Route::post('/webhook/callback', [WebhookController::class, 'callback']);
+
+
+Route::post('/magic/webhook/callback', [\Modules\MagicChange\Http\Controllers\WebhookController::class, 'callback']);

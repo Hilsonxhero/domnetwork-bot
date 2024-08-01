@@ -8,5 +8,6 @@
     "Guide": true,
     "Support": true,
     "Setting": true,
-    "Notification": true
+    "Notification": true,
+    "MagicChange": true
 }
