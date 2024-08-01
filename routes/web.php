@@ -15,7 +15,8 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Modules\Setting\Transformers\SettingResource;
 use Spatie\MediaLibrary\Conversions\ImageGenerators\Webp;
 use Vandar\Cashier\Models\Payment;
-
+use DOMXPath;
+use DOMDocument;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,25 +58,40 @@ output data to array.
         // getting data
         $out = "";
         while (!feof($f)) $out .= fgets($f);
-        dd($out);
+        // dd($out);
 
         fclose($f);
 
-        // searching for hidden fields
-        if (!preg_match_all("/<input name='(.*)' type='hidden' value='(.*)'>/", $out, $result, PREG_SET_ORDER)) {
-            dd('Ivalid output');
-            exit;
+        $html = $out;
+        $dom = new DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML($html);
+        libxml_clear_errors();
+        $xpath = new DOMXPath($dom);
+        $error_node = $xpath->query('//input[@name="ERROR"]')->item(0);
+        $voucher_num_node = $xpath->query('//input[@name="VOUCHER_NUM"]')->item(0);
+        $voucher_code_node = $xpath->query('//input[@name="VOUCHER_CODE"]')->item(0);
+
+        if (!is_null($voucher_num_node)) {
+            $voucher_num_value = $voucher_num_node->getAttribute('value');
+            dd($voucher_num_value);
+            $voucher_code_value = $voucher_code_node->getAttribute('value');
         }
 
-        $ar = "";
-        foreach ($result as $item) {
-            $key = $item[1];
-            $ar[$key] = $item[2];
-        }
+        // if (!preg_match_all("/<input name='(.*)' type='hidden' value='(.*)'>/", $out, $result, PREG_SET_ORDER)) {
+        //     dd('Ivalid output');
+        //     exit;
+        // }
 
-        echo '<pre>';
-        dd($ar);
-        echo '</pre>';
+        // $ar = "";
+        // foreach ($result as $item) {
+        //     $key = $item[1];
+        //     $ar[$key] = $item[2];
+        // }
+
+        // echo '<pre>';
+        // dd($ar);
+        // echo '</pre>';
     } catch (\Throwable $th) {
         dd($th);
     }
