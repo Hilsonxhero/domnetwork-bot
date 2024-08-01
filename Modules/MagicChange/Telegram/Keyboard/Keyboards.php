@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Telegram\Keyboard;
+namespace Modules\MagicChange\Telegram\Keyboard;
+
 
 class  Keyboards
 {

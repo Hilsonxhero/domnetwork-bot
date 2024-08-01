@@ -36,6 +36,10 @@ class StartCommand extends Command
                 'is_magic_bot_user' => true,
                 'is_dom_bot_user' => false
             ]);
+        } else {
+            if ($user->is_dom_bot_user) {
+                $user->is_magic_bot_user = true;
+            }
         }
         $purchase_service = ['text' => '🛒 خرید '];
         $services = ['text' => '🛍  خرید های من'];
