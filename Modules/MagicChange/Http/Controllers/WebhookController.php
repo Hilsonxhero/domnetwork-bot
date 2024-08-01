@@ -16,13 +16,13 @@ class WebhookController extends Controller
     {
         $update = Telegram::bot("magic")->commandsHandler(true);
 
-
         $sender = $update->getMessage()->from;
+
         $user = User::query()->where('uid', $sender->id)->first();
 
         if ($update->getMessage()->text !== "/start") {
             if ($update->getMessage()->text == Keyboards::HOME) {
-                Telegram::sendMessage([
+                Telegram::bot("magic")->sendMessage([
                     'text' => "سلام {$user->username} عزیز، به ربات Magic Change خوش آمدید. 🚀\nیکی از دکمه های زیر را انتخاب کنید !",
                     'chat_id' => $sender->id,
                     'reply_markup' => KeyboardHandler::home(),
@@ -43,7 +43,7 @@ class WebhookController extends Controller
                     "💰 *موجودی:* `$user->wallet` " . "تومان\n\n" .
                     "🗳 *تعداد کل سرویس ها:* `$services`\n\n" .
                     "✅ *سرویس های فعال:* `$avaible_services`\n\n";
-                Telegram::sendMessage([
+                Telegram::bot("magic")->sendMessage([
                     'text' => $message,
                     "chat_id" => $sender->id,
                     'parse_mode' => 'MarkdownV2',
