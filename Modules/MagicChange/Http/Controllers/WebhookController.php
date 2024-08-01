@@ -29,27 +29,27 @@ class WebhookController extends Controller
                 ]);
                 return true;
             }
-        }
 
-        if ($update->getMessage()->text == Keyboards::PROFILE) {
-            $user->update([
-                'section' => Keyboards::PROFILE,
-                'step' => 1
-            ]);
-            $services = $user->subscriptions()->get()->count();
-            $avaible_services = $user->subscriptions()->where('status', 'active')->whereDate('expire_at', '>=', now())->get()->count();
-            $register_date = formatGregorian($user->created_at);
-            $message = "👤 *شناسه کاربری:* `$user->uid`\n\n" .
-                "⏰ *تاریخ عضویت:* `$register_date`\n\n" .
-                "💰 *موجودی:* `$user->wallet` " . "تومان\n\n" .
-                "🗳 *تعداد کل سرویس ها:* `$services`\n\n" .
-                "✅ *سرویس های فعال:* `$avaible_services`\n\n";
-            Telegram::sendMessage([
-                'text' => $message,
-                "chat_id" => $sender->id,
-                'parse_mode' => 'MarkdownV2',
-                'reply_markup' => KeyboardHandler::home(),
-            ]);
+            if ($update->getMessage()->text == Keyboards::PROFILE) {
+                $user->update([
+                    'section' => Keyboards::PROFILE,
+                    'step' => 1
+                ]);
+                $services = $user->subscriptions()->get()->count();
+                $avaible_services = $user->subscriptions()->where('status', 'active')->whereDate('expire_at', '>=', now())->get()->count();
+                $register_date = formatGregorian($user->created_at);
+                $message = "👤 *شناسه کاربری:* `$user->uid`\n\n" .
+                    "⏰ *تاریخ عضویت:* `$register_date`\n\n" .
+                    "💰 *موجودی:* `$user->wallet` " . "تومان\n\n" .
+                    "🗳 *تعداد کل سرویس ها:* `$services`\n\n" .
+                    "✅ *سرویس های فعال:* `$avaible_services`\n\n";
+                Telegram::sendMessage([
+                    'text' => $message,
+                    "chat_id" => $sender->id,
+                    'parse_mode' => 'MarkdownV2',
+                    'reply_markup' => KeyboardHandler::home(),
+                ]);
+            }
         }
     }
 }
