@@ -48,7 +48,7 @@ output data to array.
 */
 
         // trying to open URL to process PerfectMoney e-Voucher creation
-        $f = fopen('https://perfectmoney.com/acct/ev_create.asp?AccountID=63150797&PassPhrase=amir3090@A&Payer_Account=U45963880&Amount=0.01', 'rb');
+        $f = fopen('https://perfectmoney.com/acct/ev_create.asp?AccountID=63150797&PassPhrase=amir3090@A&Payer_Account=U45963880&Amount=1', 'rb');
 
         if ($f === false) {
             dd('error openning url');
