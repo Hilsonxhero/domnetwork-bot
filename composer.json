@@ -16,7 +16,8 @@
         "nwidart/laravel-modules": "^10.0",
         "shetabit/payment": "^5.4",
         "simplesoftwareio/simple-qrcode": "~4",
-        "spatie/laravel-medialibrary": "^10.15"
+        "spatie/laravel-medialibrary": "^10.15",
+        "vandarpay/cashier": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e686a766d3822b41dc03c26f61bf6aa",
+    "content-hash": "f7a1eb5911696321d93d664aa26273b2",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -7712,6 +7712,64 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.6"
             },
             "time": "2023-01-03T09:29:04+00:00"
+        },
+        {
+            "name": "vandarpay/cashier",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vandarpay/cashier.git",
+                "reference": "6948413c1b86f94d62fcdd265955ce785c91b290"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vandarpay/cashier/zipball/6948413c1b86f94d62fcdd265955ce785c91b290",
+                "reference": "6948413c1b86f94d62fcdd265955ce785c91b290",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
+                "illuminate/database": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "illuminate/http": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "illuminate/routing": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "php": "^7.2.5|^8.0|^8.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0|^5.0|^6.0|^7.0|^8.0",
+                "phpunit/phpunit": "^8.4|^9.3.3|^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Vandar\\Cashier\\VandarCashierServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vandar\\Cashier\\": "src/",
+                    "Vandar\\Cashier\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vandar",
+                    "email": "info@vandar.io"
+                }
+            ],
+            "description": "Official Vander package for easier access to Vander documents",
+            "support": {
+                "issues": "https://github.com/vandarpay/cashier/issues",
+                "source": "https://github.com/vandarpay/cashier/tree/1.0.7"
+            },
+            "time": "2024-02-28T08:10:12+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
